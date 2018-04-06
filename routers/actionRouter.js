@@ -68,16 +68,8 @@ router.put('/:id', (req, res) => {
     const update = req.body;
     actionDb
     .update(id, update)
-    .then(count => {
-    if (count > 0) {
-        actionDb.get(id).then(updatedActions=> {
-        res.status(200).json(updatedActions);
-        });
-    } else {
-        res
-        .status(404)
-        .json({ message: 'The action with the specified ID does not exist.' });
-    }
+    .then(response => {
+        res.status(200).json({ response });
     })
     .catch(error => {
     res.status(500).json({message:'There was an error updating the actions.'});
