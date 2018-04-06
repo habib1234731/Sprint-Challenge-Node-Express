@@ -22,6 +22,10 @@ server.use(myLogger);
 server.use('/api/projects/',projectRouter);
 server.use('/api/actions/',actionRouter);
 
+server.get('/', function(req, res) {
+    res.json({api: 'Running...'});
+})
+
 const port = 5000;
 server.listen(port, () => {
     console.log(`Api is running on port ${port}`)
